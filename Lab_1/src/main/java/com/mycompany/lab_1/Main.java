@@ -4,14 +4,15 @@ public class Main
 {
     public static void main(String[] args)
     {
-        Loops();
-        Methods();
-        Objects();        
-        Inheritance();
-        Circles();
+        loops();
+        methods();
+        objects();        
+        inheritance();
+        circles();
+        triangles();
     }
     
-    private static void Loops()
+    private static void loops()
     {
         // Loops
         System.out.println("LOOPS");
@@ -19,7 +20,7 @@ public class Main
         Loops.printEvenNumbers(array);
     }
     
-    private static void Methods()
+    private static void methods()
     {
         // Methods
         System.out.println("\nMETHODS");
@@ -27,16 +28,16 @@ public class Main
         student.printFullName();
     }
     
-    private static void Objects()
+    private static void objects()
     {
         // Objects
         System.out.println("\nOBJECTS");
         Point point = new Point(8, 4);
         point.scale();
-        point.printPoint();
+        point.print();
     }
     
-    private static void Inheritance()
+    private static void inheritance()
     {
         // Inheritance
         System.out.println("\nINHERITANCE");
@@ -44,7 +45,7 @@ public class Main
         System.out.println("The area of the shape is: " + shape.area());
     }
     
-    private static void Circles()
+    private static void circles()
     {
         // Circles
         System.out.println("\nCIRCLES");
@@ -60,5 +61,18 @@ public class Main
         
         System.out.println("Distance = " + circle1.getDistance(circle2));
         System.out.println("Is touching = " + circle1.touchWith(circle2));
+    }
+    
+    private static void triangles()
+    {
+        // Triangles
+        System.out.println("\nTRIANGLES");
+        Triangle triangle = new Triangle();
+        
+        triangle.print();
+        System.out.println("Perimeter = " + triangle.perimeter());
+        System.out.println("Area = " + triangle.area());
+        
+        triangle.setPoint1(10, 0);
     }
 }
