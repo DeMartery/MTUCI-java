@@ -1,7 +1,5 @@
 package com.mycompany.lab_1;
 
-import java.util.Scanner;
-
 public class Triangle
 {
     private Point point1;
@@ -43,7 +41,7 @@ public class Triangle
     public double perimeter()
     {
         double perimeter = point1.length(point2) + point2.length(point3) + point3.length(point1);
-        return perimeter;
+        return Rounder.round(perimeter, 3);
     }
     
     public double area()
@@ -59,38 +57,40 @@ public class Triangle
     
     public void setPoint1(double x, double y)
     {
-        Point oldPoint = point1;
-        point1 = new Point(x, y);
-        
-        if (Point.checkCollinearity(point1, point2, point3))
-        {
-            System.out.println("Вершины должны быть неколлинеарны!");
-            point1 = oldPoint;
-        }
+        point1 = setPoint(point1, x, y);
     }
     
     public void setPoint2(double x, double y)
     {
-        Point oldPoint = point2;
-        point2 = new Point(x, y);
-        
-        if (Point.checkCollinearity(point1, point2, point3))
-        {
-            System.out.println("Вершины должны быть неколлинеарны!");
-            point2 = oldPoint;
-        }
+        point2 = setPoint(point2, x, y);
     }
     
     public void setPoint3(double x, double y)
     {
-        Point oldPoint = point3;
-        point3 = new Point(x, y);
+        point3 = setPoint(point3, x, y);
+    }
+    
+    private Point setPoint(Point point, double x, double y)
+    {
+        Point oldPoint = new Point(point.x, point.y);
+        point.set(x, y);
         
         if (Point.checkCollinearity(point1, point2, point3))
         {
             System.out.println("Вершины должны быть неколлинеарны!");
-            point3 = oldPoint;
+            point = oldPoint;
         }
+        
+        return point;
+    }
+    
+    public void rotate(double angle)
+    {
+        Point pivot = getGravityCenter();
+        
+        point1.rotate(pivot, angle);
+        point2.rotate(pivot, angle);
+        point3.rotate(pivot, angle);
     }
     
     private Point getGravityCenter()

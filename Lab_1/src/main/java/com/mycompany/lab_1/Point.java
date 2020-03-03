@@ -1,7 +1,6 @@
 package com.mycompany.lab_1;
 
 import java.util.Scanner;
-import java.util.Vector;
 
 public class Point
 {
@@ -55,6 +54,16 @@ public class Point
     {
         x = newX;
         y = newY;
+    }
+    
+    public void rotate(Point pivot, double angle)
+    {
+        double cos = Math.cos((Math.PI * angle) / 180);
+        double sin = Math.sin((Math.PI * angle) / 180);
+        double newX = cos * (x - pivot.x) - sin * (y - pivot.y) + pivot.x ;
+        double newY = cos * (y - pivot.y) + sin * (x - pivot.x) + pivot.y;                
+        
+        set(Rounder.round(newX, 3), Rounder.round(newY, 3));
     }
     
     public double length(Point p)

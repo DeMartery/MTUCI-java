@@ -67,12 +67,17 @@ public class Main
     {
         // Triangles
         System.out.println("\nTRIANGLES");
-        Triangle triangle = new Triangle();
+        //Triangle triangle = new Triangle();
+        Triangle triangle = new Triangle(new Point(0, 0), new Point(0, 5), new Point(5, 0));
         
         triangle.print();
         System.out.println("Perimeter = " + triangle.perimeter());
         System.out.println("Area = " + triangle.area());
         
-        triangle.setPoint1(10, 0);
+        //triangle.setPoint1(10, 0);
+        //triangle.print();
+        
+        triangle.rotate(270);
+        triangle.print();
     }
 }
